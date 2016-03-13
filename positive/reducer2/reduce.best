@@ -1,0 +1,422 @@
+typedef unsigned int size_t;
+        typedef unsigned long long __u_quad_t;
+        typedef __u_quad_t __dev_t;
+        typedef unsigned long __ino_t;
+        typedef long __off_t;
+        typedef long __time_t;
+        typedef int __ssize_t;
+        typedef struct _IO_FILE FILE;
+        typedef __builtin_va_list __gnuc_va_list;
+        typedef __gnuc_va_list va_list;
+        typedef __time_t time_t;
+        struct tm {
+     };
+        typedef __ino_t ino_t;
+        typedef __dev_t dev_t;
+        typedef __off_t off_t;
+        typedef __ssize_t ssize_t;
+        typedef int ptrdiff_t;
+        struct stat {
+        __dev_t st_dev ;
+        __ino_t st_ino ;
+        __off_t st_size ;
+     };
+        struct winsize {
+        unsigned short ws_col ;
+     };
+        struct trie_file {
+        unsigned long long size ;
+        unsigned long long atime ;
+     };
+        typedef struct triebuild triebuild;
+        typedef struct triewalk triewalk;
+        typedef struct indexbuild indexbuild;
+        struct html_config {
+        char const   *format ;
+        int autoage ;
+        time_t oldest ;
+        time_t newest ;
+        int showfiles ;
+     };
+        struct httpd_config {
+        char const   *address ;
+        int port ;
+        char const   *basicauthdata ;
+     };
+        struct inclusion_exclusion {
+        int type ;
+        char const   *wildcard ;
+        int path ;
+     };
+        struct ctx {
+        triebuild *tb ;
+        dev_t datafile_dev ;
+        dev_t filesystem_dev ;
+        ino_t datafile_ino ;
+        time_t last_output_update ;
+        int progress ;
+        int progwidth ;
+        int straight_to_dump ;
+        struct inclusion_exclusion *inex ;
+        int ninex ;
+        int crossfs ;
+        int usemtime ;
+        int fakeatimes ;
+     };
+        struct action {
+        int mode ;
+        char *arg ;
+     };
+        typedef unsigned int __socklen_t;
+        typedef long __fd_mask;
+        struct __anonstruct_fd_set_14 {
+        __fd_mask fds_bits[1024 / (8 * (int )sizeof(__fd_mask ))] ;
+     };
+        typedef struct __anonstruct_fd_set_14 fd_set;
+        typedef unsigned short uint16_t;
+        typedef unsigned int uint32_t;
+        typedef __socklen_t socklen_t;
+        typedef uint32_t in_addr_t;
+        struct in_addr {
+     };
+        struct sockaddr_in {
+     };
+        struct connctx {
+        char *data ;
+        int datalen ;
+        char *method ;
+        char *url ;
+        char *headers ;
+        int state ;
+     };
+        struct fd {
+        int fd ;
+        int type ;
+        int deleted ;
+        char *wdata ;
+        int wdatalen ;
+        int wdatapos ;
+        int magic_access ;
+        struct connctx *cctx ;
+     };
+        struct trie_header {
+        size_t maxpathlen ;
+     };
+        void *smalloc(size_t size ) ;
+        extern struct _IO_FILE *stdin ;
+        extern struct _IO_FILE *stdout ;
+        extern struct _IO_FILE *stderr ;
+        size_t trie_maxpathlen(void const   *t ) ;
+        char pathsep  =    (char )'/';
+        static int gotdata(void *vctx , char const   *pathname , struct stat64  const  *st )  ;
+        static void scan_error(void *vctx , char const   *fmt  , ...)  ;
+        static int const   opthasval[34]  =    {
+          (int const   )1,      (int const   )0,      (int const   )1,      (int const   )0,          (int const   )0,      (int const   )0,      (int const   )1,      (int const   )1,          (int const   )1,      (int const   )0,      (int const   )0,      (int const   )1,          (int const   )1,      (int const   )1,      (int const   )1,      (int const   )1,          (int const   )1,      (int const   )0,      (int const   )0,      (int const   )0,          (int const   )0,      (int const   )0,      (int const   )0,      (int const   )0,          (int const   )1,      (int const   )1,      (int const   )1,      (int const   )1,          (int const   )1,      (int const   )1,      (int const   )1,      (int const   )0,          (int const   )0,      (int const   )0};
+        static char const   shortopts[15]  =    {
+          (char const   )'s',      (char const   )'w',      (char const   )'t',      (char const   )'R',          (char const   )'D',      (char const   )'L',      (char const   )'S',      (char const   )'H',          (char const   )'f',      (char const   )'r',      (char const   )'d',      (char const   )'a',          (char const   )'h',      (char const   )'V',      (char const   )'\000'};
+        static char const   * const  longopts[59]  =    {
+          (char const   */* const  */)"scan",      (char const   */* const  */)"web",      (char const   */* const  */)"server",      (char const   */* const  */)"httpd",          (char const   */* const  */)"text",      (char const   */* const  */)"remove",      (char const   */* const  */)"delete",      (char const   */* const  */)"unlink",          (char const   */* const  */)"dump",      (char const   */* const  */)"load",      (char const   */* const  */)"scan_dump",      (char const   */* const  */)"html",          (char const   */* const  */)"file",      (char const   */* const  */)"cross_fs",      (char const   */* const  */)"no_cross_fs",      (char const   */* const  */)"prune",          (char const   */* const  */)"prune_path",      (char const   */* const  */)"exclude",      (char const   */* const  */)"exclude_path",      (char const   */* const  */)"include",          (char const   */* const  */)"include_path",      (char const   */* const  */)"progress",      (char const   */* const  */)"scan_progress",      (char const   */* const  */)"no_progress",          (char const   */* const  */)"no_scan_progress",      (char const   */* const  */)"tty_progress",      (char const   */* const  */)"tty_scan_progress",      (char const   */* const  */)"progress_tty",          (char const   */* const  */)"scan_progress_tty",      (char const   */* const  */)"dir_atime",      (char const   */* const  */)"dir_atimes",      (char const   */* const  */)"no_dir_atime",          (char const   */* const  */)"no_dir_atimes",      (char const   */* const  */)"mtime",      (char const   */* const  */)"files",      (char const   */* const  */)"age_range",          (char const   */* const  */)"range",      (char const   */* const  */)"ages",      (char const   */* const  */)"address",      (char const   */* const  */)"addr",          (char const   */* const  */)"server_address",      (char const   */* const  */)"server_addr",      (char const   */* const  */)"auth",      (char const   */* const  */)"http_auth",          (char const   */* const  */)"httpd_auth",      (char const   */* const  */)"server_auth",      (char const   */* const  */)"web_auth",      (char const   */* const  */)"auth_file",          (char const   */* const  */)"auth_fd",      (char const   */* const  */)"depth",      (char const   */* const  */)"max_depth",      (char const   */* const  */)"maximum_depth",          (char const   */* const  */)"age",      (char const   */* const  */)"min_age",      (char const   */* const  */)"minimum_age",      (char const   */* const  */)"help",          (char const   */* const  */)"version",      (char const   */* const  */)"licence",      (char const   */* const  */)"license"};
+        static int const   shortvals[14]  =    {
+          (int const   )0,      (int const   )1,      (int const   )2,      (int const   )3,          (int const   )4,      (int const   )5,      (int const   )6,      (int const   )7,          (int const   )8,      (int const   )24,      (int const   )29,      (int const   )30,          (int const   )31,      (int const   )32};
+        static int const   longvals[59]  =    {
+          (int const   )0,      (int const   )1,      (int const   )1,      (int const   )1,          (int const   )2,      (int const   )3,      (int const   )3,      (int const   )3,          (int const   )4,      (int const   )5,      (int const   )6,      (int const   )7,          (int const   )8,      (int const   )9,      (int const   )10,      (int const   )11,          (int const   )12,      (int const   )13,      (int const   )14,      (int const   )15,          (int const   )16,      (int const   )17,      (int const   )17,      (int const   )18,          (int const   )18,      (int const   )19,      (int const   )19,      (int const   )19,          (int const   )19,      (int const   )20,      (int const   )20,      (int const   )21,          (int const   )21,      (int const   )22,      (int const   )23,      (int const   )24,          (int const   )24,      (int const   )24,      (int const   )25,      (int const   )25,          (int const   )25,      (int const   )25,      (int const   )26,      (int const   )26,          (int const   )26,      (int const   )26,      (int const   )26,      (int const   )27,          (int const   )28,      (int const   )29,      (int const   )29,      (int const   )29,          (int const   )30,      (int const   )30,      (int const   )30,      (int const   )31,          (int const   )32,      (int const   )33,      (int const   )33};
+        char const   * const  licence[22] ;
+        int main(int argc , char **argv )  {
+        int fd ;
+       int count ;
+       struct ctx actx ;
+       struct ctx *ctx ;
+       struct stat st ;
+       off_t totalsize ;
+       off_t realsize ;
+       void *mappedfile ;
+       triewalk *tw ;
+       indexbuild *ib ;
+       struct trie_file  const  *tf ;
+       struct trie_file  const  *prevtf ;
+       char *filename ;
+       int doing_opts ;
+       struct action *actions ;
+       int nactions ;
+       int actionsize ;
+       int action ;
+       time_t now ;
+       time_t tmp ;
+       time_t textcutoff ;
+       time_t htmlnewest ;
+       time_t htmloldest ;
+       int htmlautoagerange ;
+       char const   *httpserveraddr ;
+       int httpserverport ;
+       char const   *httpauthdata ;
+       int auth ;
+       int progress ;
+       struct inclusion_exclusion *inex ;
+       int ninex ;
+       int inexsize ;
+       int crossfs ;
+       int tqdepth ;
+       int fakediratimes ;
+       int mtime ;
+       int showfiles ;
+       char *p ;
+       int wordstart ;
+       int tmp___0 ;
+       int optid ;
+       int i ;
+       char *optval ;
+       char *tmp___1 ;
+       char const   *opt ;
+       char const   *s ;
+       int match ;
+       size_t tmp___2 ;
+       char c ;
+       char *tmp___3 ;
+       size_t tmp___4 ;
+       int i___0 ;
+       void *tmp___5 ;
+       void *tmp___6 ;
+       void *tmp___7 ;
+       void *tmp___8 ;
+       void *tmp___9 ;
+       void *tmp___10 ;
+       void *tmp___11 ;
+       void *tmp___12 ;
+       char *q ;
+       size_t tmp___13 ;
+       char *tmp___14 ;
+       time_t tmp___15 ;
+       int tmp___16 ;
+       char *port ;
+       size_t tmp___17 ;
+       char *tmp___18 ;
+       size_t tmp___19 ;
+       int tmp___20 ;
+       int tmp___21 ;
+       int tmp___22 ;
+       int tmp___23 ;
+       int tmp___24 ;
+       int tmp___25 ;
+       int fd___0 ;
+       char namebuf[40] ;
+       char const   *name ;
+       char *authbuf ;
+       int authlen ;
+       int authsize ;
+       int ret ;
+       int *tmp___26 ;
+       char *tmp___27 ;
+       void *tmp___28 ;
+       void *tmp___29 ;
+       int *tmp___30 ;
+       char *tmp___31 ;
+       void *tmp___32 ;
+       int tmp___33 ;
+       int tmp___34 ;
+       int tmp___35 ;
+       int tmp___36 ;
+       int tmp___37 ;
+       int mode ;
+       char const   *scandir ;
+       char *buf ;
+       char *tmp___38 ;
+       unsigned int newpathsep ;
+       size_t tmp___39 ;
+       int tmp___40 ;
+       int *tmp___41 ;
+       char *tmp___42 ;
+       int tmp___43 ;
+       int *tmp___44 ;
+       char *tmp___45 ;
+       int tmp___46 ;
+       int tmp___48 ;
+       struct winsize ws ;
+       int tmp___49 ;
+       char *buf___0 ;
+       int line ;
+       struct trie_file tf___0 ;
+       char *p___0 ;
+       char *q___0 ;
+       size_t tmp___50 ;
+       char *tmp___51 ;
+       char *tmp___52 ;
+       int c___0 ;
+       int i___1 ;
+       char *tmp___53 ;
+       size_t maxpathlen ;
+       size_t delta ;
+       char *buf___1 ;
+       char *prevbuf ;
+       int tmp___54 ;
+       __off_t tmp___55 ;
+       ssize_t tmp___56 ;
+       void *tmp___57 ;
+       void *tmp___58 ;
+       int i___2 ;
+       void const   *oldfile ;
+       ptrdiff_t diff ;
+       __off_t tmp___59 ;
+       ssize_t tmp___60 ;
+       off_t tmp___61 ;
+       char *tmp___62 ;
+       char *querydir ;
+       size_t pathlen ;
+       int *tmp___63 ;
+       char *tmp___64 ;
+       int tmp___65 ;
+       char *querydir___0 ;
+       size_t pathlen___0 ;
+       size_t maxpathlen___0 ;
+       char *pathbuf ;
+       struct html_config cfg ;
+       unsigned long xi ;
+       char *html ;
+       int *tmp___66 ;
+       char *tmp___67 ;
+       int tmp___68 ;
+       void *tmp___69 ;
+       int tmp___70 ;
+       unsigned long tmp___71 ;
+       int tmp___72 ;
+       size_t maxpathlen___1 ;
+       char *buf___2 ;
+       int *tmp___73 ;
+       char *tmp___74 ;
+       int tmp___75 ;
+       void *tmp___76 ;
+       struct html_config pcfg ;
+       struct httpd_config dcfg ;
+       int *tmp___77 ;
+       char *tmp___78 ;
+       int tmp___79 ;
+       int *tmp___80 ;
+       char *tmp___81 ;
+       int tmp___82 ;
+       {
+    {   while (1) {     while_continue___0: /* CIL Label */ ;     while_continue:      argc --;     if (! (argc > 0)) {       goto while_break;     }     argv ++;     p = *argv;     if (doing_opts) {       if ((int )*p == 45) {         {         wordstart = 1;         tmp___0 = strcmp((char const   *)p, "--");         }         if (! tmp___0) {           doing_opts = 0;           goto while_continue;         }         p ++;         {         while (1) {           while_continue___1: /* CIL Label */ ;           if (! *p) {             goto while_break___0;           }           optid = -1;           if (wordstart) {             if ((int )*p == 45) {               {               p ++;               optval = strchr((char const   *)p, '=');               }               if (optval) {                 tmp___1 = optval;                 optval ++;                 *tmp___1 = (char )'\000';               }               i = 0;               {               while (1) {                 while_continue___2: /* CIL Label */ ;                 if (! (i < 59)) {                   goto while_break___1;                 }                 opt = (char const   *)longopts[i];                 s = (char const   *)p;                 match = 1;                 {                 while (1) {                   while_continue___3: /* CIL Label */ ;                   if (! *opt) {                     goto while_break___2;                   }                   if ((int const   )*opt == 95) {                     if ((int const   )*s == 45) {                       s ++;                     } else                     if ((int const   )*s == 95) {                       s ++;                     }                   } else {                     if ((int const   )*opt != (int const   )*s) {                       match = 0;                       goto while_break___2;                     }                     s ++;                   }                   opt ++;                 }                 while_break___18: /* CIL Label */ ;                 }                 while_break___2: ;                 if (match) {                   if (! *s) {                     optid = (int )longvals[i];                     goto while_break___1;                   }                 }                 i ++;               }               while_break___17: /* CIL Label */ ;               }               while_break___1: ;               if (optid < 0) {                 {                 fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: unrecognised option \'--%s\'\n",                         "agedu", p);                 }                 return (1);               }               {               if (! opthasval[optid]) {                 if (optval) {                   {                   fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: unexpected argument to option \'--%s\'\n",                           "agedu", p);                   }                   return (1);                 }               } else               if (! optval) {                 argc --;                 if (argc > 0) {                   argv ++;                   optval = *argv;                 } else {                   {                   fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: option \'--%s\' expects an argument\n",                           "agedu", p);                   }                   return (1);                 }               }               }               {               tmp___2 = strlen((char const   *)p);               p += tmp___2;               }             } else {               goto _L;             }           } else {             _L:              tmp___3 = p;             p ++;             c = *tmp___3;             i = 0;             {             while (1) {               while_continue___4: /* CIL Label */ ;               if (! (i < 14)) {                 goto while_break___3;               }               {               if ((int )c == (int )shortopts[i]) {                 optid = (int )shortvals[i];                 goto while_break___3;               }               }               i ++;             }             while_break___19: /* CIL Label */ ;             }             while_break___3: ;             if (optid < 0) {               {               fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: unrecognised option \'-%c\'\n",                       "agedu", (int )c);               }               return (1);             }             {             if (opthasval[optid]) {               if (*p) {                 {                 optval = p;                 tmp___4 = strlen((char const   *)p);                 p += tmp___4;                 }               } else {                 argc --;                 if (argc > 0) {                   argv ++;                   optval = *argv;                 } else {                   {                   fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: option \'-%c\' expects an argument\n",                           "agedu", (int )c);                   }                   return (1);                 }               }             } else {               optval = (char *)((void *)0);             }             }           }           wordstart = 0;           if (optid == 31) {             goto case_31;           }           if (optid == 32) {             goto case_32;           }           if (optid == 33) {             goto case_33;           }           if (optid == 0) {             goto case_0;           }           if (optid == 6) {             goto case_6;           }           if (optid == 4) {             goto case_4;           }           if (optid == 5) {             goto case_5;           }           if (optid == 2) {             goto case_2;           }           if (optid == 7) {             goto case_7;           }           if (optid == 1) {             goto case_1;           }           if (optid == 3) {             goto case_3;           }           if (optid == 17) {             goto case_17;           }           if (optid == 18) {             goto case_18;           }           if (optid == 19) {             goto case_19;           }           if (optid == 9) {             goto case_9;           }           if (optid == 10) {             goto case_10;           }           if (optid == 20) {             goto case_20;           }           if (optid == 21) {             goto case_21;           }           if (optid == 23) {             goto case_23;           }           if (optid == 22) {             goto case_22;           }           if (optid == 8) {             goto case_8;           }           if (optid == 29) {             goto case_29;           }           if (optid == 30) {             goto case_30;           }           if (optid == 24) {             goto case_24;           }           if (optid == 25) {             goto case_25;           }           if (optid == 26) {             goto case_26;           }           if (optid == 28) {             goto case_28;           }           if (optid == 27) {             goto case_28;           }           if (optid == 12) {             goto case_12;           }           if (optid == 11) {             goto case_12;           }           if (optid == 14) {             goto case_12;           }           if (optid == 13) {             goto case_12;           }           if (optid == 16) {             goto case_12;           }           if (optid == 15) {             goto case_12;           }           goto switch_break;           case_31:            {           usage(stdout);           }           return (0);           case_32:            {           printf((char const   */* __restrict  */)"%s, revision %s\n", "agedu", "r8642");           }           return (0);           case_33:            i___0 = 0;           {           while (1) {             while_continue___5: /* CIL Label */ ;             if (! licence[i___0]) {               goto while_break___4;             }             {             fputs((char const   */* __restrict  */)((char const   *)licence[i___0]),                   (FILE */* __restrict  */)stdout);             i___0 ++;             }           }           while_break___20: /* CIL Label */ ;           }           while_break___4: ;           return (0);           return (0);           case_0:            if (nactions >= actionsize) {             {             actionsize = (nactions * 3) / 2 + 16;             tmp___5 = srealloc((void *)actions, (size_t )((unsigned long )actionsize * sizeof(struct action )));             actions = (struct action *)tmp___5;             }           }           (actions + nactions)->mode = 2;           (actions + nactions)->arg = optval;           nactions ++;           goto switch_break;           case_6:            if (nactions >= actionsize) {             {             actionsize = (nactions * 3) / 2 + 16;             tmp___6 = srealloc((void *)actions, (size_t )((unsigned long )actionsize * sizeof(struct action )));             actions = (struct action *)tmp___6;             }           }           (actions + nactions)->mode = 4;           (actions + nactions)->arg = optval;           nactions ++;           goto switch_break;           case_4:            if (nactions >= actionsize) {             {             actionsize = (nactions * 3) / 2 + 16;             tmp___7 = srealloc((void *)actions, (size_t )((unsigned long )actionsize * sizeof(struct action )));             actions = (struct action *)tmp___7;             }           }           (actions + nactions)->mode = 3;           (actions + nactions)->arg = (char *)((void *)0);           nactions ++;           goto switch_break;           case_5:            if (nactions >= actionsize) {             {             actionsize = (nactions * 3) / 2 + 16;             tmp___8 = srealloc((void *)actions, (size_t )((unsigned long )actionsize * sizeof(struct action )));             actions = (struct action *)tmp___8;             }           }           (actions + nactions)->mode = 5;           (actions + nactions)->arg = (char *)((void *)0);           nactions ++;           goto switch_break;           case_2:            if (nactions >= actionsize) {             {             actionsize = (nactions * 3) / 2 + 16;             tmp___9 = srealloc((void *)actions, (size_t )((unsigned long )actionsize * sizeof(struct action )));             actions = (struct action *)tmp___9;             }           }           (actions + nactions)->mode = 0;           (actions + nactions)->arg = optval;           nactions ++;           goto switch_break;           case_7:            if (nactions >= actionsize) {             {             actionsize = (nactions * 3) / 2 + 16;             tmp___10 = srealloc((void *)actions, (size_t )((unsigned long )actionsize * sizeof(struct action )));             actions = (struct action *)tmp___10;             }           }           (actions + nactions)->mode = 1;           (actions + nactions)->arg = optval;           nactions ++;           goto switch_break;           case_1:            if (nactions >= actionsize) {             {             actionsize = (nactions * 3) / 2 + 16;             tmp___11 = srealloc((void *)actions, (size_t )((unsigned long )actionsize * sizeof(struct action )));             actions = (struct action *)tmp___11;             }           }           (actions + nactions)->mode = 6;           (actions + nactions)->arg = (char *)((void *)0);           nactions ++;           goto switch_break;           case_3:            if (nactions >= actionsize) {             {             actionsize = (nactions * 3) / 2 + 16;             tmp___12 = srealloc((void *)actions, (size_t )((unsigned long )actionsize * sizeof(struct action )));             actions = (struct action *)tmp___12;             }           }           (actions + nactions)->mode = 7;           (actions + nactions)->arg = (char *)((void *)0);           nactions ++;           goto switch_break;           case_17:            progress = 2;           goto switch_break;           case_18:            progress = 0;           goto switch_break;           case_19:            progress = 1;           goto switch_break;           case_9:            crossfs = 1;           goto switch_break;           case_10:            crossfs = 0;           goto switch_break;           case_20:            fakediratimes = 0;           goto switch_break;           case_21:            fakediratimes = 1;           goto switch_break;           case_23:            showfiles = 1;           goto switch_break;           case_22:            mtime = 1;           goto switch_break;           case_8:            filename = optval;           goto switch_break;           case_29:            {           tqdepth = atoi((char const   *)optval);           }           goto switch_break;           case_30:            {           textcutoff = parse_age(now, (char const   *)optval);           }           goto switch_break;           case_24:            {           tmp___16 = strcmp((char const   *)optval, "auto");           }           if (tmp___16) {             {             tmp___13 = strcspn((char const   *)optval, "-:");             q = optval + tmp___13;             }             if (*q) {               tmp___14 = q;               q ++;               *tmp___14 = (char )'\000';             }             {             htmloldest = parse_age(now, (char const   *)optval);             }             if (*q) {               {               tmp___15 = parse_age(now, (char const   *)q);               htmlnewest = tmp___15;               }             } else {               htmlnewest = now;             }             htmlautoagerange = 0;           } else {             htmlautoagerange = 1;           }           goto switch_break;           case_25:            if ((int )*(optval + 0) == 91) {             {             port = strchr((char const   *)optval, ']');             }             if ((unsigned long )port != (unsigned long )((void *)0)) {               port ++;             } else {               port = optval;             }           } else {             port = optval;           }           {           tmp___17 = strcspn((char const   *)port, ":");           port += tmp___17;           }           if (port) {             tmp___18 = port;             port ++;             *tmp___18 = (char )'\000';           }           {           httpserveraddr = (char const   *)optval;           httpserverport = atoi((char const   *)port);           }           goto switch_break;           case_26:            {           tmp___25 = strcmp((char const   *)optval, "magic");           }           if (tmp___25) {             {             tmp___24 = strcmp((char const   *)optval, "basic");             }             if (tmp___24) {               {               tmp___23 = strcmp((char const   *)optval, "none");               }               if (tmp___23) {                 {                 tmp___22 = strcmp((char const   *)optval, "default");                 }                 if (tmp___22) {                   {                   tmp___20 = strcmp((char const   *)optval, "help");                   }                   if (tmp___20) {                     {                     tmp___21 = strcmp((char const   *)optval, "list");                     }                     if (tmp___21) {                       {                       tmp___19 = strlen("agedu");                       fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: unrecognised authentication type \'%s\'\n%*s  options are \'magic\', \'basic\', \'none\', \'default\'\n",                               "agedu", optval, (int )tmp___19, "");                       }                       return (1);                     } else {                       {                       printf((char const   */* __restrict  */)"agedu: supported HTTP authentication types are:\n       magic      use Linux /proc/net/tcp to determine owner of peer socket\n       basic      HTTP Basic username and password authentication\n       default    use \'magic\' if possible,  otherwise fall back to \'basic\'\n       none       unauthenticated HTTP (if the data file is non-confidential)\n");                       }                       return (0);                     }                   } else {                     {                     printf((char const   */* __restrict  */)"agedu: supported HTTP authentication types are:\n       magic      use Linux /proc/net/tcp to determine owner of peer socket\n       basic      HTTP Basic username and password authentication\n       default    use \'magic\' if possible,  otherwise fall back to \'basic\'\n       none       unauthenticated HTTP (if the data file is non-confidential)\n");                     }                     return (0);                   }                 } else {                   auth = 3;                 }               } else {                 auth = 4;               }             } else {               auth = 2;             }           } else {             auth = 1;           }           goto switch_break;           case_28:            if (optid == 27) {             {             fd___0 = open((char const   *)optval, 0);             }             if (fd___0 < 0) {               {               tmp___26 = __errno_location();               tmp___27 = strerror(*tmp___26);               fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: %s: open: %s\n",                       "agedu", optval, tmp___27);               }               return (1);             }             name = (char const   *)optval;           } else {             {             fd___0 = atoi((char const   *)optval);             name = (char const   *)(namebuf);             sprintf((char */* __restrict  */)(namebuf), (char const   */* __restrict  */)"fd %d",                     fd___0);             }           }           {           authlen = 0;           authsize = 256;           tmp___28 = smalloc((size_t )((unsigned long )authsize * sizeof(char )));           authbuf = (char *)tmp___28;           }           {           while (1) {             while_continue___6: /* CIL Label */ ;             {             ret = read(fd___0, (void *)(authbuf + authlen), (size_t )(authsize - authlen));             }             if (! (ret > 0)) {               goto while_break___5;             }             authlen += ret;             if (authsize - authlen < authsize / 16) {               {               authsize = (authlen * 3) / 2 + 4096;               tmp___29 = srealloc((void *)authbuf, (size_t )((unsigned long )authsize * sizeof(char )));               authbuf = (char *)tmp___29;               }             }           }           while_break___21: /* CIL Label */ ;           }           while_break___5: ;           if (ret < 0) {             {             tmp___30 = __errno_location();             tmp___31 = strerror(*tmp___30);             fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: %s: read: %s\n",                     "agedu", name, tmp___31);             }             return (1);           }           if (optid == 27) {             {             close(fd___0);             }           }           httpauthdata = (char const   *)authbuf;           goto switch_break;           case_12:            if (ninex >= inexsize) {             {             inexsize = (ninex * 3) / 2 + 16;             tmp___32 = srealloc((void *)inex, (size_t )((unsigned long )inexsize * sizeof(struct inclusion_exclusion )));             inex = (struct inclusion_exclusion *)tmp___32;             }           }           if (optid == 16) {             tmp___33 = 1;           } else           if (optid == 14) {             tmp___33 = 1;           } else           if (optid == 12) {             tmp___33 = 1;           } else {             tmp___33 = 0;           }           (inex + ninex)->path = tmp___33;           if (optid == 15) {             (inex + ninex)->type = 1;           } else {             if (optid == 16) {               tmp___37 = 1;             } else {               if (optid == 13) {                 tmp___36 = 0;               } else {                 if (optid == 14) {                   tmp___35 = 0;                 } else {                   if (optid == 11) {                     tmp___34 = -1;                   } else {                     tmp___34 = -1;                   }                   tmp___35 = tmp___34;                 }                 tmp___36 = tmp___35;               }               tmp___37 = tmp___36;             }             (inex + ninex)->type = tmp___37;           }           (inex + ninex)->wildcard = (char const   *)optval;           ninex ++;           goto switch_break;           switch_break: ;         }         while_break___16: /* CIL Label */ ;         }         while_break___0: ;       } else {         {         fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: unexpected argument \'%s\'\n",                 "agedu", p);         }         return (1);       }     } else {       {       fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: unexpected argument \'%s\'\n",               "agedu", p);       }       return (1);     }   }   while_break___15: /* CIL Label */ ;   }
+    while_break: ;
+    {   while (1) {     while_continue___7: /* CIL Label */ ;     if (! (action < nactions)) {       goto while_break___6;     }     mode = (actions + action)->mode;     if (mode == 2) {       goto _L___4;     } else     if (mode == 4) {       goto _L___4;     } else     if (mode == 5) {       _L___4:        scandir = (char const   *)(actions + action)->arg;       if (mode == 5) {         {         tmp___38 = fgetline(stdin);         buf = tmp___38;         tmp___39 = strcspn((char const   *)buf, "\r\n");         *(buf + tmp___39) = (char )'\000';         tmp___40 = sscanf((char const   */* __restrict  */)((char const   *)buf),                           (char const   */* __restrict  */)"agedu dump file. pathsep=%x",                           & newpathsep);         }         if (1 != tmp___40) {           {           fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: header in dump file not recognised\n",                   "agedu");           }           return (1);         }         {         pathsep = (char )newpathsep;         sfree((void *)buf);         }       }       if (mode == 2) {         goto _L___0;       } else       if (mode == 5) {         _L___0:          {         fd = open((char const   *)filename, 578, 384);         }         if (fd < 0) {           {           tmp___41 = __errno_location();           tmp___42 = strerror(*tmp___41);           fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: %s: open: %s\n",                   "agedu", filename, tmp___42);           }           return (1);         }         {         tmp___43 = fstat(fd, & st);         }         if (tmp___43 < 0) {           {           perror("agedu: fstat");           }           return (1);         }         ctx->datafile_dev = st.st_dev;         ctx->datafile_ino = st.st_ino;         ctx->straight_to_dump = 0;       } else {         ctx->datafile_dev = (dev_t )-1;         ctx->datafile_ino = (ino_t )-1;         ctx->straight_to_dump = 1;       }       if (mode == 2) {         goto _L___1;       } else       if (mode == 4) {         _L___1:          {         tmp___46 = stat((char const   */* __restrict  */)scandir, (struct stat */* __restrict  */)(& st));         }         if (tmp___46 < 0) {           {           tmp___44 = __errno_location();           tmp___45 = strerror(*tmp___44);           fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: %s: stat: %s\n",                   "agedu", scandir, tmp___45);           }           return (1);         }         if (crossfs) {           ctx->filesystem_dev = (dev_t )0;         } else {           ctx->filesystem_dev = st.st_dev;         }       }       {       ctx->inex = inex;       ctx->ninex = ninex;       ctx->crossfs = crossfs;       ctx->fakeatimes = fakediratimes;       ctx->usemtime = mtime;       ctx->last_output_update = time((time_t *)((void *)0));       }       if (progress == 1) {         {         tmp___48 = isatty(2);         }         if (tmp___48) {           progress = 2;         } else {           progress = 0;         }       }       ctx->progress = progress;       if (progress) {         {         tmp___49 = ioctl(2, 21523UL, & ws);         }         if (tmp___49 == 0) {           if ((int )ws.ws_col > 0) {             ctx->progwidth = (int )ws.ws_col - 1;           } else {             ctx->progwidth = 79;           }         } else {           ctx->progwidth = 79;         }       } else {         ctx->progwidth = 79;       }       if (mode == 4) {         {         printf((char const   */* __restrict  */)"agedu dump file. pathsep=%02x\n",                (int )((unsigned char )pathsep));         }       }       if (mode != 4) {         {         ctx->tb = triebuild_new(fd);         }       }       if (mode == 5) {         line = 2;         {         while (1) {           while_continue___8: /* CIL Label */ ;           {           buf___0 = fgetline(stdin);           }           if (! ((unsigned long )buf___0 != (unsigned long )((void *)0))) {             goto while_break___7;           }           {           tmp___50 = strcspn((char const   *)buf___0, "\r\n");           *(buf___0 + tmp___50) = (char )'\000';           p___0 = buf___0;           q___0 = p___0;           }           {           while (1) {             while_continue___9: /* CIL Label */ ;             if (*p___0) {               if (! ((int )*p___0 != 32)) {                 goto while_break___8;               }             } else {               goto while_break___8;             }             p___0 ++;           }           while_break___24: /* CIL Label */ ;           }           while_break___8: ;           if (! *p___0) {             {             fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: dump file line %d: expected at least three fields\n",                     "agedu", line);             }             return (1);           }           {           tmp___51 = p___0;           p___0 ++;           *tmp___51 = (char )'\000';           tf___0.size = strtoull((char const   */* __restrict  */)((char const   *)q___0),                                  (char **/* __restrict  */)((char **)((void *)0)),                                  10);           q___0 = p___0;           }           {           while (1) {             while_continue___10: /* CIL Label */ ;             if (*p___0) {               if (! ((int )*p___0 != 32)) {                 goto while_break___9;               }             } else {               goto while_break___9;             }             p___0 ++;           }           while_break___25: /* CIL Label */ ;           }           while_break___9: ;           if (! *p___0) {             {             fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: dump file line %d: expected at least three fields\n",                     "agedu", line);             }             return (1);           }           {           tmp___52 = p___0;           p___0 ++;           *tmp___52 = (char )'\000';           tf___0.atime = strtoull((char const   */* __restrict  */)((char const   *)q___0),                                   (char **/* __restrict  */)((char **)((void *)0)),                                   10);           q___0 = buf___0;           }           {           while (1) {             while_continue___11: /* CIL Label */ ;             if (! *p___0) {               goto while_break___10;             }             c___0 = (int )*p___0;             if ((int )*p___0 == 37) {               p___0 ++;               c___0 = 0;               i___1 = 0;               {               while (1) {                 while_continue___12: /* CIL Label */ ;                 if (! (i___1 < 2)) {                   goto while_break___11;                 }                 c___0 *= 16;                 if ((int )*p___0 >= 48) {                   if ((int )*p___0 <= 57) {                     c___0 += (int )*p___0 - 48;                   } else {                     goto _L___3;                   }                 } else                 _L___3:                  if ((int )*p___0 >= 65) {                   if ((int )*p___0 <= 70) {                     c___0 += (int )*p___0 - 55;                   } else {                     goto _L___2;                   }                 } else                 _L___2:                  if ((int )*p___0 >= 97) {                   if ((int )*p___0 <= 102) {                     c___0 += (int )*p___0 - 87;                   } else {                     {                     fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: dump file line %d: unable to parse hex escape\n",                             "agedu", line);                     }                   }                 } else {                   {                   fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: dump file line %d: unable to parse hex escape\n",                           "agedu", line);                   }                 }                 p___0 ++;                 i___1 ++;               }               while_break___27: /* CIL Label */ ;               }               while_break___11: ;             }             tmp___53 = q___0;             q___0 ++;             *tmp___53 = (char )c___0;             p___0 ++;           }           while_break___26: /* CIL Label */ ;           }           while_break___10:            {           *q___0 = (char )'\000';           triebuild_add(ctx->tb, (char const   *)buf___0, (struct trie_file  const  *)(& tf___0));           sfree((void *)buf___0);           line ++;           }         }         while_break___23: /* CIL Label */ ;         }         while_break___7: ;       } else {         {         du(scandir, & gotdata, & scan_error, (void *)ctx);         }       }       if (mode != 4) {         {         count = triebuild_finish(ctx->tb);         triebuild_free(ctx->tb);         }         if (ctx->progress) {           {           fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%-*s\r",                   ctx->progwidth, "");           fflush(stderr);           }         }         {         tmp___54 = fstat(fd, & st);         }         if (tmp___54 < 0) {           {           perror("agedu: fstat");           }           return (1);         }         {         printf((char const   */* __restrict  */)"Built pathname index, %d entries, %llu bytes of index\n",                count, (unsigned long long )st.st_size);         totalsize = index_initial_size(st.st_size, count);         totalsize += totalsize / 10L;         tmp___55 = lseek(fd, totalsize - 1L, 0);         }         if (tmp___55 < 0L) {           {           perror("agedu: lseek");           }           return (1);         }         {         tmp___56 = write(fd, (void const   *)"\000", (size_t )1);         }         if (tmp___56 < 1) {           {           perror("agedu: write");           }           return (1);         }         {         mappedfile = mmap((void *)0, (size_t )totalsize, 3, 1, fd, (__off_t )0);         }         if (! mappedfile) {           {           perror("agedu: mmap");           }           return (1);         }         if (fakediratimes) {           {           printf((char const   */* __restrict  */)"Faking directory atimes\n");           trie_fake_dir_atimes(mappedfile);           }         }         {         printf((char const   */* __restrict  */)"Building index\n");         ib = indexbuild_new(mappedfile, st.st_size, count, & delta);         maxpathlen = trie_maxpathlen((void const   *)mappedfile);         tmp___57 = smalloc((size_t )((unsigned long )maxpathlen * sizeof(char )));         buf___1 = (char *)tmp___57;         tmp___58 = smalloc((size_t )((unsigned long )maxpathlen * sizeof(char )));         prevbuf = (char *)tmp___58;         tw = triewalk_new((void const   *)mappedfile);         airac_observe(prevbuf, 0);         *(prevbuf + 0) = (char )'\000';         tf = triewalk_next(tw, buf___1);         }         if (! tf) {           {           __assert_fail("tf", "/home/wslee/benchmarks/agedu-8642/agedu.c", 1110U,                         "main");           }         }         {         while (1) {           while_continue___13: /* CIL Label */ ;           {           tmp___61 = indexbuild_realsize(ib);           }           if (totalsize - tmp___61 < (off_t )delta) {             {             oldfile = (void const   *)mappedfile;             munmap(mappedfile, (size_t )totalsize);             totalsize += (off_t )delta;             totalsize += totalsize / 10L;             tmp___59 = lseek(fd, totalsize - 1L, 0);             }             if (tmp___59 < 0L) {               {               perror("agedu: lseek");               }               return (1);             }             {             tmp___60 = write(fd, (void const   *)"\000", (size_t )1);             }             if (tmp___60 < 1) {               {               perror("agedu: write");               }               return (1);             }             {             mappedfile = mmap((void *)0, (size_t )totalsize, 3, 1, fd, (__off_t )0);             }             if (! mappedfile) {               {               perror("agedu: mmap");               }               return (1);             }             {             indexbuild_rebase(ib, mappedfile);             triewalk_rebase(tw, (void const   *)mappedfile);             diff = (ptrdiff_t )((unsigned char const   *)mappedfile - (unsigned char const   *)oldfile);             }             if (prevtf) {               prevtf = (struct trie_file  const  *)((unsigned char const   *)prevtf + diff);             }             if (tf) {               tf = (struct trie_file  const  *)((unsigned char const   *)tf + diff);             }           }           {           prevtf = tf;           memcpy((void */* __restrict  */)((void *)prevbuf), (void const   */* __restrict  */)((void const   *)buf___1),                  maxpathlen);           tf = triewalk_next(tw, buf___1);           }           if (! tf) {             *(buf___1 + 0) = (char )'\000';           }           i___2 = 0;           {           while (1) {             while_continue___14: /* CIL Label */ ;             if (*(prevbuf + i___2)) {               if (! ((int )*(prevbuf + i___2) == (int )*(buf___1 + i___2))) {                 goto while_break___13;               }             } else {               goto while_break___13;             }             i___2 ++;           }           while_break___29: /* CIL Label */ ;           }           while_break___13: ;           if (! *(prevbuf + i___2)) {             if ((int )*(buf___1 + i___2) == (int )pathsep) {               {               indexbuild_tag(ib);               }             } else             if (i___2 > 0) {               if ((int )*(buf___1 + (i___2 - 1)) == (int )pathsep) {                 {                 indexbuild_tag(ib);                 }               }             }           }           {           indexbuild_add(ib, prevtf);           }           if (! tf) {             {             indexbuild_tag(ib);             }             goto while_break___12;           }           {           tmp___62 = strchr((char const   *)(prevbuf + i___2), (int )pathsep);           }           if (tmp___62) {             {             indexbuild_tag(ib);             }           } else           if (! tf) {             {             indexbuild_tag(ib);             }           }         }         while_break___28: /* CIL Label */ ;         }         while_break___12:          {         triewalk_free(tw);         realsize = indexbuild_realsize(ib);         indexbuild_free(ib);         munmap(mappedfile, (size_t )totalsize);         ftruncate(fd, realsize);         close(fd);         printf((char const   */* __restrict  */)"Final index file size = %llu bytes\n",                (unsigned long long )realsize);         }       }     } else     if (mode == 0) {       {       querydir = (actions + action)->arg;       fd = open((char const   *)filename, 0);       }       if (fd < 0) {         {         tmp___63 = __errno_location();         tmp___64 = strerror(*tmp___63);         fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: %s: open: %s\n",                 "agedu", filename, tmp___64);         }         return (1);       }       {       tmp___65 = fstat(fd, & st);       }       if (tmp___65 < 0) {         {         perror("agedu: fstat");         }         return (1);       }       {       totalsize = st.st_size;       mappedfile = mmap((void *)0, (size_t )totalsize, 1, 1, fd, (__off_t )0);       }       if (! mappedfile) {         {         perror("agedu: mmap");         }         return (1);       }       {       pathsep = trie_pathsep((void const   *)mappedfile);       pathlen = strlen((char const   *)querydir);       }       if (pathlen > 0U) {         if ((int )*(querydir + (pathlen - 1U)) == (int )pathsep) {           pathlen --;           *(querydir + pathlen) = (char )'\000';         }       }       {       text_query((void const   *)mappedfile, (char const   *)querydir, textcutoff,                  showfiles, tqdepth);       munmap(mappedfile, (size_t )totalsize);       }     } else     if (mode == 1) {       {       querydir___0 = (actions + action)->arg;       fd = open((char const   *)filename, 0);       }       if (fd < 0) {         {         tmp___66 = __errno_location();         tmp___67 = strerror(*tmp___66);         fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: %s: open: %s\n",                 "agedu", filename, tmp___67);         }         return (1);       }       {       tmp___68 = fstat(fd, & st);       }       if (tmp___68 < 0) {         {         perror("agedu: fstat");         }         return (1);       }       {       totalsize = st.st_size;       mappedfile = mmap((void *)0, (size_t )totalsize, 1, 1, fd, (__off_t )0);       }       if (! mappedfile) {         {         perror("agedu: mmap");         }         return (1);       }       {       pathsep = trie_pathsep((void const   *)mappedfile);       maxpathlen___0 = trie_maxpathlen((void const   *)mappedfile);       tmp___69 = smalloc((size_t )((unsigned long )maxpathlen___0 * sizeof(char )));       pathbuf = (char *)tmp___69;       pathlen___0 = strlen((char const   *)querydir___0);       }       if (pathlen___0 > 0U) {         if ((int )*(querydir___0 + (pathlen___0 - 1U)) == (int )pathsep) {           pathlen___0 --;           *(querydir___0 + pathlen___0) = (char )'\000';         }       }       {       xi = trie_before((void const   *)mappedfile, (char const   *)querydir___0);       tmp___71 = trie_count((void const   *)mappedfile);       }       if (xi >= tmp___71) {         {         fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: pathname \'%s\' does not exist in index\n%*s(check it is spelled exactly as it is in the index, including\n%*sany leading \'./\')\n",                 "agedu", querydir___0, (int )(1UL + sizeof("agedu")), "", (int )(1UL + sizeof("agedu")),                 "");         }       } else {         {         trie_getpath((void const   *)mappedfile, xi, pathbuf);         tmp___72 = strcmp((char const   *)pathbuf, (char const   *)querydir___0);         }         if (tmp___72) {           {           fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: pathname \'%s\' does not exist in index\n%*s(check it is spelled exactly as it is in the index, including\n%*sany leading \'./\')\n",                   "agedu", querydir___0, (int )(1UL + sizeof("agedu")), "", (int )(1UL + sizeof("agedu")),                   "");           }         } else {           {           tmp___70 = index_has_root((void const   *)mappedfile, (int )xi);           }           if (tmp___70) {             {             cfg.format = (char const   *)((void *)0);             cfg.autoage = htmlautoagerange;             cfg.oldest = htmloldest;             cfg.newest = htmlnewest;             cfg.showfiles = showfiles;             html = html_query((void const   *)mappedfile, xi, (struct html_config  const  *)(& cfg));             fputs((char const   */* __restrict  */)((char const   *)html), (FILE */* __restrict  */)stdout);             }           } else {             {             fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: pathname \'%s\' is a file, not a directory\n",                     "agedu", querydir___0);             }           }         }       }       {       munmap(mappedfile, (size_t )totalsize);       sfree((void *)pathbuf);       }     } else     if (mode == 3) {       {       fd = open((char const   *)filename, 0);       }       if (fd < 0) {         {         tmp___73 = __errno_location();         tmp___74 = strerror(*tmp___73);         fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: %s: open: %s\n",                 "agedu", filename, tmp___74);         }         return (1);       }       {       tmp___75 = fstat(fd, & st);       }       if (tmp___75 < 0) {         {         perror("agedu: fstat");         }         return (1);       }       {       totalsize = st.st_size;       mappedfile = mmap((void *)0, (size_t )totalsize, 1, 1, fd, (__off_t )0);       }       if (! mappedfile) {         {         perror("agedu: mmap");         }         return (1);       }       {       pathsep = trie_pathsep((void const   *)mappedfile);       maxpathlen___1 = trie_maxpathlen((void const   *)mappedfile);       tmp___76 = smalloc((size_t )((unsigned long )maxpathlen___1 * sizeof(char )));       buf___2 = (char *)tmp___76;       printf((char const   */* __restrict  */)"agedu dump file. pathsep=%02x\n", (int )((unsigned char )pathsep));       tw = triewalk_new((void const   *)mappedfile);       }       {       while (1) {         while_continue___15: /* CIL Label */ ;         {         tf = triewalk_next(tw, buf___2);         }         if (! ((unsigned long )tf != (unsigned long )((void *)0))) {           goto while_break___14;         }         {         dump_line((char const   *)buf___2, tf);         }       }       while_break___30: /* CIL Label */ ;       }       while_break___14:        {       triewalk_free(tw);       munmap(mappedfile, (size_t )totalsize);       }     } else     if (mode == 6) {       {       fd = open((char const   *)filename, 0);       }       if (fd < 0) {         {         tmp___77 = __errno_location();         tmp___78 = strerror(*tmp___77);         fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: %s: open: %s\n",                 "agedu", filename, tmp___78);         }         return (1);       }       {       tmp___79 = fstat(fd, & st);       }       if (tmp___79 < 0) {         {         perror("agedu: fstat");         }         return (1);       }       {       totalsize = st.st_size;       mappedfile = mmap((void *)0, (size_t )totalsize, 1, 1, fd, (__off_t )0);       }       if (! mappedfile) {         {         perror("agedu: mmap");         }         return (1);       }       {       pathsep = trie_pathsep((void const   *)mappedfile);       dcfg.address = httpserveraddr;       dcfg.port = httpserverport;       dcfg.basicauthdata = httpauthdata;       pcfg.format = (char const   *)((void *)0);       pcfg.autoage = htmlautoagerange;       pcfg.oldest = htmloldest;       pcfg.newest = htmlnewest;       pcfg.showfiles = showfiles;       run_httpd((void const   *)mappedfile, auth, (struct httpd_config  const  *)(& dcfg),                 (struct html_config  const  *)(& pcfg));       munmap(mappedfile, (size_t )totalsize);       }     } else     if (mode == 7) {       {       tmp___82 = remove((char const   *)filename);       }       if (tmp___82 < 0) {         {         tmp___80 = __errno_location();         tmp___81 = strerror(*tmp___80);         fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"%s: %s: remove: %s\n",                 "agedu", filename, tmp___81);         }         return (1);       }     }     action ++;   }   while_break___22: /* CIL Label */ ;   }
+    while_break___6: ;
+  }
+     }
+        void *smalloc(size_t size )  {
+        void *p ;
+       {
+    {   p = malloc(size);   }
+    return (p);
+  }
+     }
+        char *dupfmt(char const   *fmt  , ...)  {
+        int pass ;
+       int totallen ;
+       char *ret ;
+       char *rp ;
+       char datebuf[80] ;
+       va_list ap ;
+       time_t t ;
+       struct tm tm ;
+       int got_time ;
+       char const   *p ;
+       char const   *data ;
+       int datalen ;
+       int stuffcr ;
+       int htmlesc ;
+       struct tm *tmp ;
+       size_t tmp___0 ;
+       int i ;
+       int tmp___2 ;
+       size_t tmp___3 ;
+       char const   *tmp___4 ;
+       size_t tmp___5 ;
+       char const   *tmp___6 ;
+       size_t tmp___7 ;
+       int tmp___8 ;
+       char const   *tmp___9 ;
+       size_t tmp___10 ;
+       char *tmp___11 ;
+       int tmp___12 ;
+       int tmp___13 ;
+       int tmp___14 ;
+       char *tmp___15 ;
+       char *tmp___16 ;
+       char *tmp___17 ;
+       void *tmp___18 ;
+       int tmp___19 ;
+       char const   *tmp___20 ;
+       char const   *tmp___21 ;
+       int tmp___22 ;
+       char const   *tmp___23 ;
+       {
+    totallen = 0;
+    {   while (1) {     while_continue: /* CIL Label */ ;     if (! (pass < 2)) {       goto while_break;     }     {     p = fmt;     __builtin_va_start(ap, fmt);     }     {     while (1) {       while_continue___0: /* CIL Label */ ;       if (! *p) {         goto while_break___0;       }       data = (char const   *)((void *)0);       datalen = 0;       stuffcr = 0;       htmlesc = 0;       if ((int const   )*p == 37) {         p ++;         if ((int const   )*p == 68) {           if (! datebuf[0]) {             if (! got_time) {               {               t = time((time_t *)((void *)0));               tmp = gmtime((time_t const   *)(& t));               tm = *tmp;               got_time = 1;               }             }             {             strftime((char */* __restrict  */)(datebuf), (size_t )(sizeof(datebuf) / sizeof(datebuf[0])),                      (char const   */* __restrict  */)"%a, %d %b %Y %H:%M:%S GMT",                      (struct tm  const  */* __restrict  */)((struct tm  const  *)(& tm)));             }           }           {           data = (char const   *)(datebuf);           tmp___0 = strlen(data);           datalen = (int )tmp___0;           }         } else         if ((int const   )*p == 100) {           {           tmp___19 = __builtin_va_arg(ap, int );           tmp___2 = tmp___19;           i = tmp___2;           sprintf((char */* __restrict  */)(datebuf), (char const   */* __restrict  */)"%d",                   i);           data = (char const   *)(datebuf);           tmp___3 = strlen(data);           datalen = (int )tmp___3;           }         } else         if ((int const   )*p == 115) {           {           tmp___20 = __builtin_va_arg(ap, char const   *);           tmp___4 = tmp___20;           data = tmp___4;           tmp___5 = strlen(data);           datalen = (int )tmp___5;           }         } else         if ((int const   )*p == 104) {           {           htmlesc = 1;           tmp___21 = __builtin_va_arg(ap, char const   *);           tmp___6 = tmp___21;           data = tmp___6;           tmp___7 = strlen(data);           datalen = (int )tmp___7;           }         } else {           if (! ((int const   )*p == 83)) {             {             __assert_fail("*p == \'S\'", "/home/wslee/benchmarks/agedu-8642/alloc.c",                           92U, "dupfmt");             }           }           {           tmp___22 = __builtin_va_arg(ap, int );           tmp___8 = tmp___22;           stuffcr = tmp___8;           tmp___23 = __builtin_va_arg(ap, char const   *);           tmp___9 = tmp___23;           data = tmp___9;           tmp___10 = strlen(data);           datalen = (int )tmp___10;           }         }         p ++;       } else {         data = p;         {         while (1) {           while_continue___1: /* CIL Label */ ;           if (*p) {             if (! ((int const   )*p != 37)) {               goto while_break___1;             }           } else {             goto while_break___1;           }           p ++;         }         while_break___6: /* CIL Label */ ;         }         while_break___1:          datalen = (int )(p - data);       }       if (pass == 0) {         {         while (1) {           while_continue___2: /* CIL Label */ ;           if (! (datalen > 0)) {             goto while_break___2;           }           totallen ++;           if (stuffcr) {             if ((int const   )*data == 10) {               totallen ++;             }           }           if (htmlesc) {             if ((int const   )*data == 60) {               totallen += 4;             } else             if ((int const   )*data == 62) {               totallen += 4;             } else             if ((int const   )*data == 38) {               totallen += 4;             }           }           data ++;           datalen --;         }         while_break___7: /* CIL Label */ ;         }         while_break___2: ;       } else {         {         while (1) {           while_continue___3: /* CIL Label */ ;           if (! (datalen > 0)) {             goto while_break___3;           }           if (htmlesc) {             if ((int const   )*data < 32) {               tmp___11 = rp;               rp ++;               *tmp___11 = (char )'?';             } else             if ((int const   )*data >= 127) {               tmp___11 = rp;               rp ++;               *tmp___11 = (char )'?';             } else {               goto _L___2;             }           } else           _L___2:            if (htmlesc) {             if ((int const   )*data == 60) {               {               tmp___12 = sprintf((char */* __restrict  */)rp, (char const   */* __restrict  */)"&lt;");               rp += tmp___12;               }             } else {               goto _L___1;             }           } else           _L___1:            if (htmlesc) {             if ((int const   )*data == 62) {               {               tmp___13 = sprintf((char */* __restrict  */)rp, (char const   */* __restrict  */)"&gt;");               rp += tmp___13;               }             } else {               goto _L___0;             }           } else           _L___0:            if (htmlesc) {             if ((int const   )*data == 38) {               {               tmp___14 = sprintf((char */* __restrict  */)rp, (char const   */* __restrict  */)"&amp;");               rp += tmp___14;               }             } else {               goto _L;             }           } else           _L:            if (stuffcr) {             if ((int const   )*data == 10) {               tmp___15 = rp;               rp ++;               *tmp___15 = (char )'\r';               tmp___16 = rp;               rp ++;               *tmp___16 = (char )'\n';             } else {               tmp___17 = rp;               rp ++;               *tmp___17 = (char )*data;             }           } else {             tmp___17 = rp;             rp ++;             *tmp___17 = (char )*data;           }           data ++;           datalen --;         }         while_break___8: /* CIL Label */ ;         }         while_break___3: ;       }     }     while_break___5: /* CIL Label */ ;     }     while_break___0:      {     __builtin_va_end(ap);     }     if (pass == 0) {       {       tmp___18 = smalloc((size_t )((unsigned long )(totallen + 1) * sizeof(char )));       ret = (char *)tmp___18;       rp = ret;       }     } else {       if (! (rp - ret == (long )totallen)) {         {         __assert_fail("rp - ret == totallen", "/home/wslee/benchmarks/agedu-8642/alloc.c",                       138U, "dupfmt");         }       }       *rp = (char )'\000';     }     pass ++;   }   while_break___4: /* CIL Label */ ;   }
+    while_break: ;
+  }
+     }
+        char *got_data(struct connctx *ctx , char *data , int length , int magic_access ,                char const   *auth_string , struct html_config  const  *cfg )  {
+        char *line ;
+       char *p ;
+       char *q ;
+       char *z1 ;
+       char *z2 ;
+       char c1 ;
+       char c2 ;
+       unsigned short const   **tmp___0 ;
+       char *tmp___1 ;
+       unsigned short const   **tmp___2 ;
+       unsigned short const   **tmp___3 ;
+       char *tmp___4 ;
+       unsigned short const   **tmp___5 ;
+       char *ret___0 ;
+       char *text ;
+       {
+    if (ctx->state == 0) {     line = ctx->data;     {     while (1) {       while_continue: /* CIL Label */ ;       if (line - ctx->data < (long )ctx->datalen) {         if (! ((int )*line == 13)) {           if (! ((int )*line == 10)) {             goto while_break;           }         }       } else {         goto while_break;       }       line ++;     }     while_break___12: /* CIL Label */ ;     }     while_break:      q = line;     {     while (1) {       while_continue___0: /* CIL Label */ ;       if (q - ctx->data < (long )ctx->datalen) {         if (! ((int )*q != 10)) {           goto while_break___0;         }       } else {         goto while_break___0;       }       q ++;     }     while_break___13: /* CIL Label */ ;     }     while_break___0: ;     if (q - ctx->data >= (long )ctx->datalen) {       return ((char *)((void *)0));     }     *q = (char )'\000';     ctx->headers = q + 1;     if ((unsigned long )q > (unsigned long )line) {       if ((int )*(q + -1) == 13) {         q --;         *q = (char )'\000';       }     }     z2 = q;     z1 = z2;     c2 = *q;     c1 = c2;     p = line;     {     while (1) {       while_continue___1: /* CIL Label */ ;       if (*p) {         {         tmp___0 = __ctype_b_loc();         }         if ((int const   )*(*tmp___0 + (int )((unsigned char )*p)) & 8192) {           goto while_break___1;         }       } else {         goto while_break___1;       }       p ++;     }     while_break___14: /* CIL Label */ ;     }     while_break___1: ;     if (*p) {       tmp___1 = p;       p ++;       z1 = tmp___1;       c1 = *z1;       *z1 = (char )'\000';     }     {     while (1) {       while_continue___2: /* CIL Label */ ;       if (*p) {         {         tmp___2 = __ctype_b_loc();         }         if (! ((int const   )*(*tmp___2 + (int )((unsigned char )*p)) & 8192)) {           goto while_break___2;         }       } else {         goto while_break___2;       }       p ++;     }     while_break___15: /* CIL Label */ ;     }     while_break___2:      q = p;     {     while (1) {       while_continue___3: /* CIL Label */ ;       if (*q) {         {         tmp___3 = __ctype_b_loc();         }         if ((int const   )*(*tmp___3 + (int )((unsigned char )*q)) & 8192) {           goto while_break___3;         }       } else {         goto while_break___3;       }       q ++;     }     while_break___16: /* CIL Label */ ;     }     while_break___3:      tmp___4 = q;     q ++;     z2 = tmp___4;     c2 = *z2;     *z2 = (char )'\000';     {     while (1) {       while_continue___4: /* CIL Label */ ;       if (*q) {         {         tmp___5 = __ctype_b_loc();         }         if (! ((int const   )*(*tmp___5 + (int )((unsigned char )*q)) & 8192)) {           goto while_break___4;         }       } else {         goto while_break___4;       }       q ++;     }     while_break___17: /* CIL Label */ ;     }     while_break___4: ;     if (! *p) {       {       *z2 = c2;       *z1 = c1;       text = dupfmt("<code>agedu</code> received the HTTP request \"<code>%h</code>\", which contains no URL.",                     line);       ret___0 = http_error((char *)"400", (char *)"Bad request", (char *)((void *)0),                            text);       sfree((void *)text);       }       return (ret___0);     }     ctx->method = line;     ctx->url = p;     if (*q) {       ctx->state = 1;     } else {       ctx->state = 2;     }   }
+  }
+     }
+        struct fd *fds  =    (struct fd *)((void *)0);
+        int nfds  =    0;
+        static char const   chars[32]  =    {
+          (char const   )'0',      (char const   )'1',      (char const   )'2',      (char const   )'3',          (char const   )'4',      (char const   )'5',      (char const   )'6',      (char const   )'7',          (char const   )'8',      (char const   )'9',      (char const   )'a',      (char const   )'b',          (char const   )'c',      (char const   )'d',      (char const   )'e',      (char const   )'f',          (char const   )'g',      (char const   )'h',      (char const   )'j',      (char const   )'k',          (char const   )'m',      (char const   )'n',      (char const   )'p',      (char const   )'q',          (char const   )'r',      (char const   )'s',      (char const   )'t',      (char const   )'u',          (char const   )'v',      (char const   )'x',      (char const   )'y',      (char const   )'z'};
+        void run_httpd(void const   *t , int authmask , struct httpd_config  const  *dcfg ,                struct html_config  const  *incfg )  {
+       int authtype ;
+       char *authstring ;
+       struct html_config cfg ;
+       fd_set rfds ;
+       fd_set wfds ;
+       int i___0 ;
+       int j___0 ;
+       int maxfd ;
+       int ret___0 ;
+       int __d0 ;
+       int __d1 ;
+       int __d0___0 ;
+       int __d1___0 ;
+       int *tmp___28 ;
+       char *tmp___29 ;
+       int *tmp___30 ;
+       char buf[4096] ;
+       int ret___1 ;
+       ssize_t tmp___31 ;
+       int *tmp___32 ;
+       char *tmp___33 ;
+       struct fd *f___0 ;
+       struct sockaddr_in addr___0 ;
+       socklen_t addrlen___0 ;
+       int newfd ;
+       int tmp___34 ;
+       char readbuf[4096] ;
+       int ret___2 ;
+       int tmp___35 ;
+       size_t tmp___36 ;
+       int ret___3 ;
+       ssize_t tmp___37 ;
+       {
+    {   while (1) {     while_continue___7: /* CIL Label */ ;     while_continue___3: ;     {     while (1) {       while_continue___8: /* CIL Label */ ;       __asm__  volatile   ("cld; rep; "                            "stosl": "=c" (__d0), "=D" (__d1): "a" (0), "0" (sizeof(fd_set ) / sizeof(__fd_mask )),                            "1" (& rfds.fds_bits[0]): "memory");       goto while_break___4;     }     while_break___17: /* CIL Label */ ;     }     while_break___4: ;     {     while (1) {       while_continue___9: /* CIL Label */ ;       __asm__  volatile   ("cld; rep; "                            "stosl": "=c" (__d0___0), "=D" (__d1___0): "a" (0), "0" (sizeof(fd_set ) / sizeof(__fd_mask )),                            "1" (& wfds.fds_bits[0]): "memory");       goto while_break___5;     }     while_break___18: /* CIL Label */ ;     }     while_break___5:      maxfd = 0;     j___0 = 0;     i___0 = j___0;     {     while (1) {       while_continue___10: /* CIL Label */ ;       if (! (j___0 < nfds)) {         goto while_break___6;       }       if ((fds + j___0)->deleted) {         {         sfree((void *)(fds + j___0)->wdata);         free_connection((fds + j___0)->cctx);         }         goto __Cont;       }       *(fds + i___0) = *(fds + j___0);       if ((fds + i___0)->type == 0) {         goto case_0;       }       if ((fds + i___0)->type == 1) {         goto case_1;       }       if ((fds + i___0)->type == 2) {         goto case_2;       }       goto switch_break;       case_0:        {       while (1) {         while_continue___11: /* CIL Label */ ;         rfds.fds_bits[(fds + i___0)->fd / (8 * (int )sizeof(__fd_mask ))] |= 1L << (fds + i___0)->fd % (8 * (int )sizeof(__fd_mask ));         if (maxfd <= (fds + i___0)->fd) {           maxfd = (fds + i___0)->fd + 1;         } else {           maxfd = maxfd;         }         goto while_break___7;       }       while_break___20: /* CIL Label */ ;       }       while_break___7: ;       goto switch_break;       case_1:        {       while (1) {         while_continue___12: /* CIL Label */ ;         rfds.fds_bits[(fds + i___0)->fd / (8 * (int )sizeof(__fd_mask ))] |= 1L << (fds + i___0)->fd % (8 * (int )sizeof(__fd_mask ));         if (maxfd <= (fds + i___0)->fd) {           maxfd = (fds + i___0)->fd + 1;         } else {           maxfd = maxfd;         }         goto while_break___8;       }       while_break___21: /* CIL Label */ ;       }       while_break___8: ;       goto switch_break;       case_2:        {       while (1) {         while_continue___13: /* CIL Label */ ;         rfds.fds_bits[(fds + i___0)->fd / (8 * (int )sizeof(__fd_mask ))] |= 1L << (fds + i___0)->fd % (8 * (int )sizeof(__fd_mask ));         if (maxfd <= (fds + i___0)->fd) {           maxfd = (fds + i___0)->fd + 1;         } else {           maxfd = maxfd;         }         goto while_break___9;       }       while_break___22: /* CIL Label */ ;       }       while_break___9: ;       if ((fds + i___0)->wdatapos < (fds + i___0)->wdatalen) {         {         while (1) {           while_continue___14: /* CIL Label */ ;           wfds.fds_bits[(fds + i___0)->fd / (8 * (int )sizeof(__fd_mask ))] |= 1L << (fds + i___0)->fd % (8 * (int )sizeof(__fd_mask ));           if (maxfd <= (fds + i___0)->fd) {             maxfd = (fds + i___0)->fd + 1;           } else {             maxfd = maxfd;           }           goto while_break___10;         }         while_break___23: /* CIL Label */ ;         }         while_break___10: ;       }       goto switch_break;       switch_break:        i___0 ++;       __Cont:        j___0 ++;     }     while_break___19: /* CIL Label */ ;     }     while_break___6:      {     nfds = i___0;     ret___0 = select(maxfd, (fd_set */* __restrict  */)(& rfds), (fd_set */* __restrict  */)(& wfds),                      (fd_set */* __restrict  */)((fd_set *)((void *)0)), (struct timeval */* __restrict  */)((struct timeval *)((void *)0)));     }     if (ret___0 <= 0) {       if (ret___0 < 0) {         {         tmp___30 = __errno_location();         }         if (*tmp___30 != 4) {           {           tmp___28 = __errno_location();           tmp___29 = strerror(*tmp___28);           fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"select: %s",                   tmp___29);           exit(1);           }         }       }       goto while_continue___3;     }     i___0 = 0;     {     while (1) {       while_continue___15: /* CIL Label */ ;       if (! (i___0 < nfds)) {         goto while_break___11;       }       if ((fds + i___0)->type == 0) {         goto case_0___0;       }       if ((fds + i___0)->type == 1) {         goto case_1___0;       }       if ((fds + i___0)->type == 2) {         goto case_2___0;       }       goto switch_break___0;       case_0___0:        if ((rfds.fds_bits[(fds + i___0)->fd / (8 * (int )sizeof(__fd_mask ))] & (1L << (fds + i___0)->fd % (8 * (int )sizeof(__fd_mask )))) != 0L) {         {         tmp___31 = read((fds + i___0)->fd, (void *)(buf), (size_t )sizeof(buf));         ret___1 = tmp___31;         }         if (ret___1 <= 0) {           if (ret___1 < 0) {             {             tmp___32 = __errno_location();             tmp___33 = strerror(*tmp___32);             fprintf((FILE */* __restrict  */)stderr, (char const   */* __restrict  */)"standard input: read: %s\n",                     tmp___33);             exit(1);             }           }           return;         }       }       goto switch_break___0;       case_1___0:        if ((rfds.fds_bits[(fds + i___0)->fd / (8 * (int )sizeof(__fd_mask ))] & (1L << (fds + i___0)->fd % (8 * (int )sizeof(__fd_mask )))) != 0L) {         {         addrlen___0 = (socklen_t )sizeof(addr___0);         tmp___34 = accept((fds + i___0)->fd, (struct sockaddr */* __restrict  */)((struct sockaddr *)(& addr___0)),                           (socklen_t */* __restrict  */)(& addrlen___0));         newfd = tmp___34;         }         if (newfd < 0) {           goto switch_break___0;         }         {         f___0 = new_fdstruct(newfd, 2);         f___0->cctx = new_connection(t);         }         if (authtype == 1) {           {           check_magic_access(f___0);           }         }       }       goto switch_break___0;       case_2___0:        if ((rfds.fds_bits[(fds + i___0)->fd / (8 * (int )sizeof(__fd_mask ))] & (1L << (fds + i___0)->fd % (8 * (int )sizeof(__fd_mask )))) != 0L) {         {         ret___2 = read((fds + i___0)->fd, (void *)(readbuf), (size_t )sizeof(readbuf));         }         if (ret___2 <= 0) {           {           close((fds + i___0)->fd);           (fds + i___0)->deleted = 1;           }           goto switch_break___0;         } else         if (! (fds + i___0)->wdata) {           if (authtype == 4) {             tmp___35 = 1;           } else           if ((fds + i___0)->magic_access) {             tmp___35 = 1;           } else {             tmp___35 = 0;           }           {           (fds + i___0)->wdata = got_data((fds + i___0)->cctx, readbuf, ret___2, tmp___35,                                           (char const   *)authstring, (struct html_config  const  *)(& cfg));           }           if ((fds + i___0)->wdata) {             {             tmp___36 = strlen((char const   *)(fds + i___0)->wdata);             (fds + i___0)->wdatalen = (int )tmp___36;             (fds + i___0)->wdatapos = 0;             }           }         }       }       if ((wfds.fds_bits[(fds + i___0)->fd / (8 * (int )sizeof(__fd_mask ))] & (1L << (fds + i___0)->fd % (8 * (int )sizeof(__fd_mask )))) != 0L) {         if ((fds + i___0)->wdatapos < (fds + i___0)->wdatalen) {           {           tmp___37 = write((fds + i___0)->fd, (void const   *)((fds + i___0)->wdata + (fds + i___0)->wdatapos),                            (size_t )((fds + i___0)->wdatalen - (fds + i___0)->wdatapos));           ret___3 = tmp___37;           }           if (ret___3 <= 0) {             {             close((fds + i___0)->fd);             (fds + i___0)->deleted = 1;             }             goto switch_break___0;           } else {             (fds + i___0)->wdatapos += ret___3;             if ((fds + i___0)->wdatapos == (fds + i___0)->wdatalen) {               {               shutdown((fds + i___0)->fd, 1);               }             }           }         }       }       goto switch_break___0;       switch_break___0:        i___0 ++;     }     while_break___24: /* CIL Label */ ;     }     while_break___11: ;   }   while_break___16: /* CIL Label */ ;   }
+  }
+     }
+        size_t trie_maxpathlen(void const   *t )  {
+        struct trie_header  const  *hdr ;
+       {
+    return ((size_t )hdr->maxpathlen);
+  }
+     }
+ 
