@@ -1,0 +1,48 @@
+             typedef char randvec[256];
+                static randvec rvec[4]  ;
+                static long mrandom(void)  {
+               int i ;
+              
+          i = 0;
+          
+      while (1) {
+        if (! (i < 4)) 
+          goto while_break;
+        
+        
+        airac_observe(rvec, i);
+        i ++;
+        
+      }
+      
+          while_break: ;
+        
+            }
+                int main_line;
+int main_npass;
+long main_tmp___15;
+int main_argc;
+char ** main_argv;
+int main( void )  {
+              
+              
+              
+              
+              
+              
+          
+      while (1) 
+        if (! main_line <= main_npass) ;
+    else 
+          
+          main_tmp___15 = mrandom();
+          
+        
+      
+      
+        
+            }
+ 
+
+// this should reproduce the crash:
+// /usr/local/libexec/clang_delta --transformation=union-to-struct --counter=1 /home/kwonsoo/redu/positive/reducer1/creduce_bug_63944
